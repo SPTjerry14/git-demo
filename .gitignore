@@ -14,3 +14,7 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+/Dockerfile
+/docker-compose.yml
+/storage/minio
+/.setup.log
