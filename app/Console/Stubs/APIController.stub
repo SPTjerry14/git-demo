@@ -1,0 +1,18 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Http\Controllers\APIController;
+
+/**
+ * Class {{ class }}
+ * @package {{ namespace }}
+ * @author
+ */
+class {{ class }} extends APIController
+{
+    public function __construct()
+    {
+        //
+    }
+}

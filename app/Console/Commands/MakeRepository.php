@@ -37,7 +37,7 @@ class MakeRepository extends GeneratorCommand
      */
     protected function getStub()
     {
-        return app_path('Console/Stubs/Repository.php');
+        return app_path('Console/Stubs/Repository.stub');
     }
 
     /**

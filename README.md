@@ -3,7 +3,7 @@
 Set up
 
 ```
-./setup.sh --os=[mac|ubuntu] --arch=[architecture]
+./setup.sh --os=[mac|ubuntu] --arch=[arm|x64]
 ```
 
 ## add php executablePath to setting.json (or can find by typing: which php)
@@ -18,6 +18,6 @@ ext install ikappas.phpcs
 ```
 ## add phpcs config to setting.json
 ```
-    "phpcs.executablePath": "/usr/bin/local/phpcs",
+    "phpcs.executablePath": "/usr/local/bin/phpcs",
     "phpcs.standard": "PSR2"
 ```
