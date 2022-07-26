@@ -1,0 +1,16 @@
+<?php
+
+namespace {{ namespace }};
+
+/**
+ * Class {{ class }}
+ * @package {{ namespace }}
+ * @author
+ */
+class {{ class }} extends DBServices
+{
+    public function __construct()
+    {
+        //
+    }
+}

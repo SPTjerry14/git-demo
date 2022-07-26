@@ -5,39 +5,39 @@ namespace App\Console\Commands;
 use Illuminate\Console\GeneratorCommand;
 
 /**
- * Class MakeApiRequest.
+ * Class MakeAPIController.
  *
  * @author  Joker20 <manh.kiddihub@gmail.com>
  */
-class MakeAPIRequest extends GeneratorCommand
+class MakeAPIController extends GeneratorCommand
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'make:apirequest {name : Create a request for api class}';
+    protected $signature = 'make:apicontroller {name : Create a api controller class}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create a new a request for api class';
+    protected $description = 'Create a new a api controller class';
 
     /**
      * The type of class being generated.
      *
      * @var string
      */
-    protected $type = 'APIRequest';
+    protected $type = 'APIController';
 
     /**
      * @return string
      */
     protected function getStub()
     {
-        return app_path('Console/Stubs/APIRequest.stub');
+        return app_path('Console/Stubs/APIController.stub');
     }
 
     /**
@@ -71,7 +71,7 @@ class MakeAPIRequest extends GeneratorCommand
 
         $this->makeDirectory($path);
 
-        $this->files->put($path, $this->sortImports($this->buildServiceClass($name)));
+        $this->files->put($path, $this->sortImports($this->buildControllerClass($name)));
 
         $this->info($this->type . ' created successfully.');
     }
@@ -84,7 +84,7 @@ class MakeAPIRequest extends GeneratorCommand
      *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
-    protected function buildServiceClass(string $name): string
+    protected function buildControllerClass(string $name): string
     {
         $stub = $this->files->get($this->getStub());
 
@@ -97,6 +97,6 @@ class MakeAPIRequest extends GeneratorCommand
      */
     protected function getDefaultNamespace($rootNamespace): string
     {
-        return $rootNamespace . '\Http\Requests';
+        return $rootNamespace . '\Http\Controllers\Api';
     }
 }

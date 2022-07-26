@@ -44,7 +44,7 @@ class MakeService extends GeneratorCommand
      */
     protected function getServiceStub()
     {
-        return app_path('Console/Stubs/Service.php');
+        return app_path('Console/Stubs/Service.stub');
     }
 
     /**
@@ -52,7 +52,7 @@ class MakeService extends GeneratorCommand
      */
     protected function getDBServiceStub()
     {
-        return app_path('Console/Stubs/DBService.php');
+        return app_path('Console/Stubs/DBService.stub');
     }
 
     /**
