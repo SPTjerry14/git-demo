@@ -24,7 +24,7 @@ class APIController extends Controller
         } catch (\App\Exceptions\CustomException $e) {
             return APIResponse::raw('ERROR', $e->getCode(), $e->getMessage(), $e->getData());
         } catch (\Exception $e) {
-            return is_null($onError) ? APIResponse::error('ERROR.UNKNOWN_ERROR') : $onError($e);
+            return is_null($onError) ? APIResponse::error('UNKNOWN_ERROR') : $onError($e);
         }
     }
 

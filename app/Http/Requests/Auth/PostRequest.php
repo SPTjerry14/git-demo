@@ -1,15 +1,15 @@
 <?php
 
-namespace {{ namespace }};
+namespace App\Http\Requests\Auth;
 
 use App\Http\Requests\APIRequest;
 
 /**
- * Class {{ class }}
- * @package {{ namespace }}
+ * Class PostRequest
+ * @package App\Http\Requests\Auth
  * @author
  */
-class {{ class }} extends APIRequest
+class PostRequest extends APIRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -20,6 +20,8 @@ class {{ class }} extends APIRequest
     {
         return [
             //
+            'post'=>['required', 'string'],
+            'note'=>['required', 'string', 'min:50', 'max:300'],
         ];
     }
 }

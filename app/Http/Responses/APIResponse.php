@@ -63,6 +63,6 @@ class APIResponse
      */
     public static function raw(string $status, int $code, $data = null, $message = null)
     {
-        return response()->json(compact('code', 'data', 'message'), config("response.HTTP.$status"));
+        return response()->json(compact('code', 'data', 'message'), config("response-code.HTTP.$status"));
     }
 }

@@ -17,7 +17,7 @@ class CustomException extends Exception
      * @param string $configName name of error config defined in response-code.php
      * @param array|string|int $attachData Attach data to send with response
      */
-    public function __construct(string $configName, $attachData)
+    public function __construct(string $configName, $attachData = null)
     {
         $config = config("response-code.ERROR.$configName");
         parent::__construct($config['message'], $config['code']);
