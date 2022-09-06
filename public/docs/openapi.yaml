@@ -1,0 +1,2296 @@
+openapi: 3.0.3
+info:
+  title: DeVJerry
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://dev.test.com'
+paths:
+  /api/login:
+    post:
+      summary: 'Login a user'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Auth
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Username of user.'
+                  example: jerry
+                password:
+                  type: string
+                  description: 'Password of user.'
+                  example: kjav9-09v
+                password_confirmation:
+                  type: string
+                  description: 'Confirm password, must be match to password.'
+                  example: kjav9-09v
+              required:
+                - name
+                - password
+                - password_confirmation
+      security: []
+  /api/register:
+    post:
+      summary: 'Register a user'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Auth
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Username of user.'
+                  example: jerry
+                email:
+                  type: string
+                  description: 'Email of user.'
+                  example: chianh@gmail.com
+                phone:
+                  type: string
+                  description: 'Phone of user'
+                  example: '0987654321'
+                password:
+                  type: string
+                  description: 'Password of user.'
+                  example: kjav9-09v
+                profile:
+                  type: object
+                  description: ''
+                  example: []
+                  properties:
+                    first_name:
+                      type: string
+                      description: .
+                      example: abc
+                    last_name:
+                      type: string
+                      description: .
+                      example: def
+                    phone:
+                      type: numeric
+                      description: .
+                      example: '0987654321'
+                    date_of_birth:
+                      type: date
+                      description: .
+                      example: '2013-11-06'
+              required:
+                - name
+                - email
+                - phone
+                - password
+      security: []
+  /api/logout:
+    get:
+      summary: 'Logout a user'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Auth
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Username of user.'
+                  example: jerry
+                password:
+                  type: string
+                  description: 'Password of user.'
+                  example: kjav9-09v
+                phone:
+                  type: numeric
+                  description: 'Phone of user.'
+                  example: '0987654321'
+                email:
+                  type: string
+                  description: 'Email of user.'
+                  example: chianh@gmail.com
+              required:
+                - name
+                - password
+      security: []
+  /api/device/list:
+    get:
+      summary: 'List Device'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Device
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                per_page:
+                  type: integer
+                  description: '. Example : 123'
+                  example: 8
+      security: []
+  '/api/device/{id}':
+    delete:
+      summary: 'Delete Device'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Device
+      security: []
+    put:
+      summary: 'Update Device'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Device
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code_name:
+                  type: integer
+                  description: 'Code_name of device. Example : 123'
+                  example: 12
+                name:
+                  type: string
+                  description: 'Name of device. Example : asd'
+                  example: autem
+                price:
+                  type: number
+                  description: 'Number of device. Example : 123456'
+                  example: 45775497.005888
+                status:
+                  type: enum
+                  description: 'Status of device. Example : new'
+                  example: beatae
+              required:
+                - code_name
+                - name
+      security: []
+    get:
+      summary: 'Show Device'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Device
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'Id of device. Will be delete. Example : 1'
+        example: 17
+        required: true
+        schema:
+          type: integer
+  '/api/device/{id}/rent':
+    post:
+      summary: 'Rent Device'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Device
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+                  description: 'User_id of device. Example : 1'
+                  example: 13
+                rented_at:
+                  type: date
+                  description: 'Rented_at of device. Example : 2022-09-05'
+                  example: consectetur
+                returned_at:
+                  type: string
+                  description: 'Must be a valid date. Must be a date after <code>rented_at</code>.'
+                  example: '2079-01-16'
+                device_id:
+                  type: integer
+                  description: 'Device_id of device. Example : 2'
+                  example: 14
+              required:
+                - user_id
+                - device_id
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the device.'
+        example: 3
+        required: true
+        schema:
+          type: integer
+  '/api/device/{id}/giveback':
+    put:
+      summary: 'Giveback Device'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Device
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                returned_at:
+                  type: string
+                  description: 'Must be a valid date. Must be a date after <code>rented_at</code>.'
+                  example: '2089-08-10'
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the device.'
+        example: 3
+        required: true
+        schema:
+          type: integer
+  /api/device/add:
+    post:
+      summary: 'Add Device'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Device
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code_name:
+                  type: integer
+                  description: 'unique Code_name of device. Example : 123'
+                  example: 8
+                name:
+                  type: string
+                  description: 'unique Name of device. Example : asd'
+                  example: omnis
+                price:
+                  type: number
+                  description: 'Number of device. Example : 123456'
+                  example: 6207.61
+                status:
+                  type: enum
+                  description: 'Status of device. Example : new'
+                  example: tenetur
+              required:
+                - code_name
+                - name
+      security: []
+  /api/user:
+    get:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  '/api/user/{id}':
+    get:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  code: 2
+                  message: SHOW
+                  data:
+                    id: 1
+                    name: chianh123
+                    email: nguyejj@gmail.com
+                    phone: null
+                    email_verified_at: null
+                    deleted_at: null
+                    created_at: '2022-08-25T14:37:13.000000Z'
+                    updated_at: '2022-08-25T14:37:13.000000Z'
+                properties:
+                  code:
+                    type: integer
+                    example: 2
+                  message:
+                    type: string
+                    example: SHOW
+                  data:
+                    type: object
+                    example:
+                      id: 1
+                      name: chianh123
+                      email: nguyejj@gmail.com
+                      phone: null
+                      email_verified_at: null
+                      deleted_at: null
+                      created_at: '2022-08-25T14:37:13.000000Z'
+                      updated_at: '2022-08-25T14:37:13.000000Z'
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must contain only letters, numbers, dashes and underscores.'
+                  example: porro
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: ellen.cummerata@example.net
+                phone:
+                  type: number
+                  description: 'The value format is invalid.'
+                  example: '+84826018093'
+                password:
+                  type: string
+                  description: 'Must be at least 8 characters.'
+                  example: ''
+                profile:
+                  type: object
+                  description: ''
+                  example: []
+                  properties:
+                    first_name:
+                      type: string
+                      description: 'Must contain only letters.'
+                      example: quas
+                    last_name:
+                      type: string
+                      description: 'Must contain only letters, numbers, dashes and underscores.'
+                      example: voluptas
+                    phone:
+                      type: number
+                      description: 'The value format is invalid.'
+                      example: '+84974612329'
+                    date_of_birth:
+                      type: string
+                      description: 'Must be a valid date. Must be a date before or equal to <code>today</code>.'
+                      example: '2021-10-07'
+              required:
+                - name
+                - email
+      security: []
+    delete:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the user.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/list/users:
+    get:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  current_page: 1
+                  data:
+                    -
+                      id: 1
+                      name: chianh123
+                      email: nguyejj@gmail.com
+                      phone: null
+                      email_verified_at: null
+                      password: $2y$10$.GtlXI7c1TNo2sjeym43VORyNx/heHk2eY.bpAkbHJZvwKD.Xy9pC
+                      role_id: null
+                      remember_token: null
+                      deleted_at: null
+                      created_at: '2022-08-25 14:37:13'
+                      updated_at: '2022-08-25 14:37:13'
+                    -
+                      id: 2
+                      name: chianh1323
+                      email: nguyejj@gmaild.com
+                      phone: null
+                      email_verified_at: null
+                      password: $2y$10$08ePUu8Ib.pg7I5dWKVLDOHqcKLYP7sDHszfnoKCI37F4Ec7jjaBi
+                      role_id: null
+                      remember_token: null
+                      deleted_at: null
+                      created_at: '2022-08-25 14:38:05'
+                      updated_at: '2022-08-25 14:38:05'
+                    -
+                      id: 3
+                      name: chianh13723
+                      email: nguyejj7@gmaild.com
+                      phone: null
+                      email_verified_at: null
+                      password: $2y$10$rqaH5BNjTraYVhJra9PwJO8r55rcRj4jaafalTiTFU9tD0bLJZO6y
+                      role_id: null
+                      remember_token: null
+                      deleted_at: null
+                      created_at: '2022-08-25 14:38:55'
+                      updated_at: '2022-08-25 14:38:55'
+                    -
+                      id: 4
+                      name: chianh137233
+                      email: nguyejj337@gmaild.com
+                      phone: null
+                      email_verified_at: null
+                      password: $2y$10$RajYRBoIObBmEFknpV/Y7OaLyc.vPThJk1scV6VvKdcZfBVj7JdJm
+                      role_id: null
+                      remember_token: null
+                      deleted_at: null
+                      created_at: '2022-08-25 14:44:19'
+                      updated_at: '2022-08-25 14:44:19'
+                    -
+                      id: 5
+                      name: chianh137s233
+                      email: nguyejjs337@gmaild.com
+                      phone: null
+                      email_verified_at: null
+                      password: $2y$10$R.zmmD9J40bLEAYvXzBpi.VIIKROquU.lQUa9mDwIEhINhLD.pbwC
+                      role_id: null
+                      remember_token: null
+                      deleted_at: null
+                      created_at: '2022-08-25 14:45:34'
+                      updated_at: '2022-08-25 14:45:34'
+                    -
+                      id: 6
+                      name: chianh13s7s233
+                      email: nguyejjss337@gmaild.com
+                      phone: null
+                      email_verified_at: null
+                      password: $2y$10$iGZOgps.H3ENBhNTAXh.QuXOAbm//OYOK//0BrZFVfTg.wWbLYD16
+                      role_id: null
+                      remember_token: null
+                      deleted_at: null
+                      created_at: '2022-08-25 14:47:18'
+                      updated_at: '2022-08-25 14:47:18'
+                    -
+                      id: 7
+                      name: chianh13s7s2s33
+                      email: nguyejjss337s@gmaild.com
+                      phone: null
+                      email_verified_at: null
+                      password: $2y$10$lanLWp7b7QT4gq9vAasWQ.8svtlTvRZx6hQfpk9z0QwiiUrKEQtiC
+                      role_id: null
+                      remember_token: null
+                      deleted_at: null
+                      created_at: '2022-08-25 14:48:05'
+                      updated_at: '2022-08-25 14:48:05'
+                    -
+                      id: 8
+                      name: chianh1s3ss27s2ss33
+                      email: nguyejjs2sss3s37s@gmaild.com
+                      phone: null
+                      email_verified_at: null
+                      password: $2y$10$WBbQIeuzPm2XxAvh2pVV5OZ1BwgJ9GDkUSET2lPg42NzkRq.v6GxC
+                      role_id: null
+                      remember_token: null
+                      deleted_at: null
+                      created_at: '2022-08-25 15:04:56'
+                      updated_at: '2022-08-25 15:04:56'
+                    -
+                      id: 9
+                      name: chisanh1s3ss27s2ss33
+                      email: ngusyejjs2sss3s37s@gmaild.com
+                      phone: null
+                      email_verified_at: null
+                      password: $2y$10$/bHVc9EcDCuBYHUn.nMxS.mBUnXosdyN.4bqR7fLj3LMUHBI.2.Fi
+                      role_id: null
+                      remember_token: null
+                      deleted_at: null
+                      created_at: '2022-08-25 15:05:13'
+                      updated_at: '2022-08-25 15:05:13'
+                    -
+                      id: 10
+                      name: ch21isanh1s3ss327s2ss33
+                      email: ngusy1ejjs2sss3s337s@gmaild.com
+                      phone: null
+                      email_verified_at: null
+                      password: $2y$10$ELkbSj0Ff5pjGBUZVS4m1.exm./nXJ/hivDYIrhF6Ph/.8LxDN2W2
+                      role_id: null
+                      remember_token: null
+                      deleted_at: null
+                      created_at: '2022-08-25 15:50:04'
+                      updated_at: '2022-08-25 15:50:04'
+                    -
+                      id: 11
+                      name: ch121isanh1s3ss327s2ss33
+                      email: ngu1sy1ejjs2sss3s337s@gmaild.com
+                      phone: null
+                      email_verified_at: null
+                      password: $2y$10$R6BIQpDpqfpucWnqSEJFuOGU5D2Jqtumg4uvYmsLcMNGOAWbvOyRG
+                      role_id: null
+                      remember_token: null
+                      deleted_at: null
+                      created_at: '2022-08-25 15:51:23'
+                      updated_at: '2022-08-25 15:51:23'
+                    -
+                      id: 12
+                      name: chianh
+                      email: asd@gmail.com
+                      phone: null
+                      email_verified_at: null
+                      password: $2y$10$uqgZwBo7JQZjWWCYiQ0eKOxChVD4fPhE142oAWRAK70f1NuQkvO2W
+                      role_id: null
+                      remember_token: null
+                      deleted_at: null
+                      created_at: '2022-08-26 01:19:10'
+                      updated_at: '2022-08-26 01:19:10'
+                    -
+                      id: 13
+                      name: chianh1
+                      email: a2sd@gmail.com
+                      phone: null
+                      email_verified_at: null
+                      password: $2y$10$xSj1xuZ2pqBRsT/WqBA0BesU0bIvWOFtP/btl8W8c7nNEXefnJtbq
+                      role_id: null
+                      remember_token: null
+                      deleted_at: null
+                      created_at: '2022-08-26 01:19:56'
+                      updated_at: '2022-08-26 01:19:56'
+                    -
+                      id: 14
+                      name: hoang
+                      email: hoang@gmail.com
+                      phone: null
+                      email_verified_at: null
+                      password: $2y$10$wgQEWCDJzhF91kHtN5LBwOcYdqiWKf8I2coz4yw71e/czhoc8n5wq
+                      role_id: null
+                      remember_token: null
+                      deleted_at: null
+                      created_at: '2022-08-26 01:49:51'
+                      updated_at: '2022-08-26 01:49:51'
+                    -
+                      id: 15
+                      name: tung12
+                      email: tung@gmail.com
+                      phone: null
+                      email_verified_at: null
+                      password: $2y$10$1RvKs5tcos8RXky0o9szyOnltBZFmjj4Hmu3Fo3QpUBC0GXQy1YP6
+                      role_id: null
+                      remember_token: null
+                      deleted_at: null
+                      created_at: '2022-08-26 03:49:56'
+                      updated_at: '2022-08-26 03:49:56'
+                  first_page_url: 'http://dev.test.com/api/list/users?page=1'
+                  from: 1
+                  last_page: 1
+                  last_page_url: 'http://dev.test.com/api/list/users?page=1'
+                  links:
+                    -
+                      url: null
+                      label: '&laquo; Previous'
+                      active: false
+                    -
+                      url: 'http://dev.test.com/api/list/users?page=1'
+                      label: '1'
+                      active: true
+                    -
+                      url: null
+                      label: 'Next &raquo;'
+                      active: false
+                  next_page_url: null
+                  path: 'http://dev.test.com/api/list/users'
+                  per_page: 15
+                  prev_page_url: null
+                  to: 15
+                  total: 15
+                properties:
+                  current_page:
+                    type: integer
+                    example: 1
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        name: chianh123
+                        email: nguyejj@gmail.com
+                        phone: null
+                        email_verified_at: null
+                        password: $2y$10$.GtlXI7c1TNo2sjeym43VORyNx/heHk2eY.bpAkbHJZvwKD.Xy9pC
+                        role_id: null
+                        remember_token: null
+                        deleted_at: null
+                        created_at: '2022-08-25 14:37:13'
+                        updated_at: '2022-08-25 14:37:13'
+                      -
+                        id: 2
+                        name: chianh1323
+                        email: nguyejj@gmaild.com
+                        phone: null
+                        email_verified_at: null
+                        password: $2y$10$08ePUu8Ib.pg7I5dWKVLDOHqcKLYP7sDHszfnoKCI37F4Ec7jjaBi
+                        role_id: null
+                        remember_token: null
+                        deleted_at: null
+                        created_at: '2022-08-25 14:38:05'
+                        updated_at: '2022-08-25 14:38:05'
+                      -
+                        id: 3
+                        name: chianh13723
+                        email: nguyejj7@gmaild.com
+                        phone: null
+                        email_verified_at: null
+                        password: $2y$10$rqaH5BNjTraYVhJra9PwJO8r55rcRj4jaafalTiTFU9tD0bLJZO6y
+                        role_id: null
+                        remember_token: null
+                        deleted_at: null
+                        created_at: '2022-08-25 14:38:55'
+                        updated_at: '2022-08-25 14:38:55'
+                      -
+                        id: 4
+                        name: chianh137233
+                        email: nguyejj337@gmaild.com
+                        phone: null
+                        email_verified_at: null
+                        password: $2y$10$RajYRBoIObBmEFknpV/Y7OaLyc.vPThJk1scV6VvKdcZfBVj7JdJm
+                        role_id: null
+                        remember_token: null
+                        deleted_at: null
+                        created_at: '2022-08-25 14:44:19'
+                        updated_at: '2022-08-25 14:44:19'
+                      -
+                        id: 5
+                        name: chianh137s233
+                        email: nguyejjs337@gmaild.com
+                        phone: null
+                        email_verified_at: null
+                        password: $2y$10$R.zmmD9J40bLEAYvXzBpi.VIIKROquU.lQUa9mDwIEhINhLD.pbwC
+                        role_id: null
+                        remember_token: null
+                        deleted_at: null
+                        created_at: '2022-08-25 14:45:34'
+                        updated_at: '2022-08-25 14:45:34'
+                      -
+                        id: 6
+                        name: chianh13s7s233
+                        email: nguyejjss337@gmaild.com
+                        phone: null
+                        email_verified_at: null
+                        password: $2y$10$iGZOgps.H3ENBhNTAXh.QuXOAbm//OYOK//0BrZFVfTg.wWbLYD16
+                        role_id: null
+                        remember_token: null
+                        deleted_at: null
+                        created_at: '2022-08-25 14:47:18'
+                        updated_at: '2022-08-25 14:47:18'
+                      -
+                        id: 7
+                        name: chianh13s7s2s33
+                        email: nguyejjss337s@gmaild.com
+                        phone: null
+                        email_verified_at: null
+                        password: $2y$10$lanLWp7b7QT4gq9vAasWQ.8svtlTvRZx6hQfpk9z0QwiiUrKEQtiC
+                        role_id: null
+                        remember_token: null
+                        deleted_at: null
+                        created_at: '2022-08-25 14:48:05'
+                        updated_at: '2022-08-25 14:48:05'
+                      -
+                        id: 8
+                        name: chianh1s3ss27s2ss33
+                        email: nguyejjs2sss3s37s@gmaild.com
+                        phone: null
+                        email_verified_at: null
+                        password: $2y$10$WBbQIeuzPm2XxAvh2pVV5OZ1BwgJ9GDkUSET2lPg42NzkRq.v6GxC
+                        role_id: null
+                        remember_token: null
+                        deleted_at: null
+                        created_at: '2022-08-25 15:04:56'
+                        updated_at: '2022-08-25 15:04:56'
+                      -
+                        id: 9
+                        name: chisanh1s3ss27s2ss33
+                        email: ngusyejjs2sss3s37s@gmaild.com
+                        phone: null
+                        email_verified_at: null
+                        password: $2y$10$/bHVc9EcDCuBYHUn.nMxS.mBUnXosdyN.4bqR7fLj3LMUHBI.2.Fi
+                        role_id: null
+                        remember_token: null
+                        deleted_at: null
+                        created_at: '2022-08-25 15:05:13'
+                        updated_at: '2022-08-25 15:05:13'
+                      -
+                        id: 10
+                        name: ch21isanh1s3ss327s2ss33
+                        email: ngusy1ejjs2sss3s337s@gmaild.com
+                        phone: null
+                        email_verified_at: null
+                        password: $2y$10$ELkbSj0Ff5pjGBUZVS4m1.exm./nXJ/hivDYIrhF6Ph/.8LxDN2W2
+                        role_id: null
+                        remember_token: null
+                        deleted_at: null
+                        created_at: '2022-08-25 15:50:04'
+                        updated_at: '2022-08-25 15:50:04'
+                      -
+                        id: 11
+                        name: ch121isanh1s3ss327s2ss33
+                        email: ngu1sy1ejjs2sss3s337s@gmaild.com
+                        phone: null
+                        email_verified_at: null
+                        password: $2y$10$R6BIQpDpqfpucWnqSEJFuOGU5D2Jqtumg4uvYmsLcMNGOAWbvOyRG
+                        role_id: null
+                        remember_token: null
+                        deleted_at: null
+                        created_at: '2022-08-25 15:51:23'
+                        updated_at: '2022-08-25 15:51:23'
+                      -
+                        id: 12
+                        name: chianh
+                        email: asd@gmail.com
+                        phone: null
+                        email_verified_at: null
+                        password: $2y$10$uqgZwBo7JQZjWWCYiQ0eKOxChVD4fPhE142oAWRAK70f1NuQkvO2W
+                        role_id: null
+                        remember_token: null
+                        deleted_at: null
+                        created_at: '2022-08-26 01:19:10'
+                        updated_at: '2022-08-26 01:19:10'
+                      -
+                        id: 13
+                        name: chianh1
+                        email: a2sd@gmail.com
+                        phone: null
+                        email_verified_at: null
+                        password: $2y$10$xSj1xuZ2pqBRsT/WqBA0BesU0bIvWOFtP/btl8W8c7nNEXefnJtbq
+                        role_id: null
+                        remember_token: null
+                        deleted_at: null
+                        created_at: '2022-08-26 01:19:56'
+                        updated_at: '2022-08-26 01:19:56'
+                      -
+                        id: 14
+                        name: hoang
+                        email: hoang@gmail.com
+                        phone: null
+                        email_verified_at: null
+                        password: $2y$10$wgQEWCDJzhF91kHtN5LBwOcYdqiWKf8I2coz4yw71e/czhoc8n5wq
+                        role_id: null
+                        remember_token: null
+                        deleted_at: null
+                        created_at: '2022-08-26 01:49:51'
+                        updated_at: '2022-08-26 01:49:51'
+                      -
+                        id: 15
+                        name: tung12
+                        email: tung@gmail.com
+                        phone: null
+                        email_verified_at: null
+                        password: $2y$10$1RvKs5tcos8RXky0o9szyOnltBZFmjj4Hmu3Fo3QpUBC0GXQy1YP6
+                        role_id: null
+                        remember_token: null
+                        deleted_at: null
+                        created_at: '2022-08-26 03:49:56'
+                        updated_at: '2022-08-26 03:49:56'
+                    items:
+                      type: object
+                  first_page_url:
+                    type: string
+                    example: 'http://dev.test.com/api/list/users?page=1'
+                  from:
+                    type: integer
+                    example: 1
+                  last_page:
+                    type: integer
+                    example: 1
+                  last_page_url:
+                    type: string
+                    example: 'http://dev.test.com/api/list/users?page=1'
+                  links:
+                    type: array
+                    example:
+                      -
+                        url: null
+                        label: '&laquo; Previous'
+                        active: false
+                      -
+                        url: 'http://dev.test.com/api/list/users?page=1'
+                        label: '1'
+                        active: true
+                      -
+                        url: null
+                        label: 'Next &raquo;'
+                        active: false
+                    items:
+                      type: object
+                  next_page_url:
+                    type: string
+                    example: null
+                  path:
+                    type: string
+                    example: 'http://dev.test.com/api/list/users'
+                  per_page:
+                    type: integer
+                    example: 15
+                  prev_page_url:
+                    type: string
+                    example: null
+                  to:
+                    type: integer
+                    example: 15
+                  total:
+                    type: integer
+                    example: 15
+      tags:
+        - Endpoints
+      security: []
+  /api/list/profiles:
+    get:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                example:
+                  -
+                    id: 1
+                    first_name: null
+                    last_name: null
+                    gender: null
+                    date_of_birth: null
+                    image: '1'
+                    phone: null
+                    user_id: 2
+                    deleted_at: null
+                    created_at: '2022-08-25 14:38:05'
+                    updated_at: '2022-08-25 14:38:05'
+                  -
+                    id: 2
+                    first_name: null
+                    last_name: null
+                    gender: null
+                    date_of_birth: null
+                    image: '1'
+                    phone: null
+                    user_id: 3
+                    deleted_at: null
+                    created_at: '2022-08-25 14:38:55'
+                    updated_at: '2022-08-25 14:38:55'
+                  -
+                    id: 3
+                    first_name: null
+                    last_name: null
+                    gender: null
+                    date_of_birth: null
+                    image: '1'
+                    phone: null
+                    user_id: 4
+                    deleted_at: null
+                    created_at: '2022-08-25 14:44:19'
+                    updated_at: '2022-08-25 14:44:19'
+                  -
+                    id: 4
+                    first_name: null
+                    last_name: null
+                    gender: null
+                    date_of_birth: null
+                    image: '1'
+                    phone: null
+                    user_id: 8
+                    deleted_at: null
+                    created_at: '2022-08-25 15:04:56'
+                    updated_at: '2022-08-25 15:04:56'
+                  -
+                    id: 5
+                    first_name: null
+                    last_name: null
+                    gender: null
+                    date_of_birth: null
+                    image: '1'
+                    phone: null
+                    user_id: 9
+                    deleted_at: null
+                    created_at: '2022-08-25 15:05:13'
+                    updated_at: '2022-08-25 15:05:13'
+                  -
+                    id: 6
+                    first_name: null
+                    last_name: null
+                    gender: null
+                    date_of_birth: null
+                    image: '1'
+                    phone: null
+                    user_id: 10
+                    deleted_at: null
+                    created_at: '2022-08-25 15:50:04'
+                    updated_at: '2022-08-25 15:50:04'
+                  -
+                    id: 7
+                    first_name: null
+                    last_name: null
+                    gender: null
+                    date_of_birth: null
+                    image: '1'
+                    phone: null
+                    user_id: 13
+                    deleted_at: null
+                    created_at: '2022-08-26 01:19:56'
+                    updated_at: '2022-08-26 01:19:56'
+                  -
+                    id: 8
+                    first_name: null
+                    last_name: null
+                    gender: null
+                    date_of_birth: null
+                    image: '1'
+                    phone: null
+                    user_id: 14
+                    deleted_at: null
+                    created_at: '2022-08-26 01:49:51'
+                    updated_at: '2022-08-26 01:49:51'
+                  -
+                    id: 9
+                    first_name: null
+                    last_name: null
+                    gender: null
+                    date_of_birth: null
+                    image: '1'
+                    phone: null
+                    user_id: 15
+                    deleted_at: null
+                    created_at: '2022-08-26 03:49:56'
+                    updated_at: '2022-08-26 03:49:56'
+      tags:
+        - Endpoints
+      security: []
+  /api/list/roles:
+    get:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                example: []
+      tags:
+        - Endpoints
+      security: []
+  '/api/profile/{id}':
+    put:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                  description: 'Must contain only letters, numbers, dashes and underscores.'
+                  example: eum
+                last_name:
+                  type: string
+                  description: 'Must contain only letters, numbers, dashes and underscores.'
+                  example: magni
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: stan.braun@example.net
+                phone:
+                  type: number
+                  description: 'The value format is invalid.'
+                  example: '+84460608958'
+                gender:
+                  type: number
+                  description: ''
+                  example: 18852.9304
+      security: []
+    get:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'App\Services\ProfileService::show(): Return value must be of type App\Models\Profile, null returned'
+                  exception: TypeError
+                  file: /var/www/app/Services/ProfileService.php
+                  line: 31
+                  trace:
+                    -
+                      file: /var/www/app/Http/Controllers/Api/Profile/ShowController.php
+                      line: 35
+                      function: show
+                      class: App\Services\ProfileService
+                      type: '->'
+                    -
+                      file: /var/www/app/Http/Controllers/APIController.php
+                      line: 23
+                      function: 'App\Http\Controllers\Api\Profile\{closure}'
+                      class: App\Http\Controllers\Api\Profile\ShowController
+                      type: '->'
+                    -
+                      file: /var/www/app/Http/Controllers/Api/Profile/ShowController.php
+                      line: 42
+                      function: safe
+                      class: App\Http\Controllers\APIController
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Routing/Controller.php
+                      line: 54
+                      function: main
+                      class: App\Http\Controllers\Api\Profile\ShowController
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php
+                      line: 45
+                      function: callAction
+                      class: Illuminate\Routing\Controller
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Routing/Route.php
+                      line: 261
+                      function: dispatch
+                      class: Illuminate\Routing\ControllerDispatcher
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Routing/Route.php
+                      line: 204
+                      function: runController
+                      class: Illuminate\Routing\Route
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Routing/Router.php
+                      line: 725
+                      function: run
+                      class: Illuminate\Routing\Route
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                      line: 141
+                      function: 'Illuminate\Routing\{closure}'
+                      class: Illuminate\Routing\Router
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php
+                      line: 50
+                      function: 'Illuminate\Pipeline\{closure}'
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                      line: 180
+                      function: handle
+                      class: Illuminate\Routing\Middleware\SubstituteBindings
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php
+                      line: 126
+                      function: 'Illuminate\Pipeline\{closure}'
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php
+                      line: 102
+                      function: handleRequest
+                      class: Illuminate\Routing\Middleware\ThrottleRequests
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php
+                      line: 54
+                      function: handleRequestUsingNamedLimiter
+                      class: Illuminate\Routing\Middleware\ThrottleRequests
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                      line: 180
+                      function: handle
+                      class: Illuminate\Routing\Middleware\ThrottleRequests
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/sanctum/src/Http/Middleware/EnsureFrontendRequestsAreStateful.php
+                      line: 33
+                      function: 'Illuminate\Pipeline\{closure}'
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                      line: 141
+                      function: 'Laravel\Sanctum\Http\Middleware\{closure}'
+                      class: Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                      line: 116
+                      function: 'Illuminate\Pipeline\{closure}'
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/sanctum/src/Http/Middleware/EnsureFrontendRequestsAreStateful.php
+                      line: 34
+                      function: then
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                      line: 180
+                      function: handle
+                      class: Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                      line: 116
+                      function: 'Illuminate\Pipeline\{closure}'
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Routing/Router.php
+                      line: 726
+                      function: then
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Routing/Router.php
+                      line: 703
+                      function: runRouteWithinStack
+                      class: Illuminate\Routing\Router
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Routing/Router.php
+                      line: 667
+                      function: runRoute
+                      class: Illuminate\Routing\Router
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Routing/Router.php
+                      line: 656
+                      function: dispatchToRoute
+                      class: Illuminate\Routing\Router
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php
+                      line: 167
+                      function: dispatch
+                      class: Illuminate\Routing\Router
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                      line: 141
+                      function: 'Illuminate\Foundation\Http\{closure}'
+                      class: Illuminate\Foundation\Http\Kernel
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php
+                      line: 21
+                      function: 'Illuminate\Pipeline\{closure}'
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php
+                      line: 31
+                      function: handle
+                      class: Illuminate\Foundation\Http\Middleware\TransformsRequest
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                      line: 180
+                      function: handle
+                      class: Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php
+                      line: 21
+                      function: 'Illuminate\Pipeline\{closure}'
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php
+                      line: 40
+                      function: handle
+                      class: Illuminate\Foundation\Http\Middleware\TransformsRequest
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                      line: 180
+                      function: handle
+                      class: Illuminate\Foundation\Http\Middleware\TrimStrings
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php
+                      line: 27
+                      function: 'Illuminate\Pipeline\{closure}'
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                      line: 180
+                      function: handle
+                      class: Illuminate\Foundation\Http\Middleware\ValidatePostSize
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php
+                      line: 86
+                      function: 'Illuminate\Pipeline\{closure}'
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                      line: 180
+                      function: handle
+                      class: Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php
+                      line: 62
+                      function: 'Illuminate\Pipeline\{closure}'
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                      line: 180
+                      function: handle
+                      class: Illuminate\Http\Middleware\HandleCors
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php
+                      line: 39
+                      function: 'Illuminate\Pipeline\{closure}'
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                      line: 180
+                      function: handle
+                      class: Illuminate\Http\Middleware\TrustProxies
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                      line: 116
+                      function: 'Illuminate\Pipeline\{closure}'
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php
+                      line: 142
+                      function: then
+                      class: Illuminate\Pipeline\Pipeline
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php
+                      line: 111
+                      function: sendRequestThroughRouter
+                      class: Illuminate\Foundation\Http\Kernel
+                      type: '->'
+                    -
+                      file: /var/www/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
+                      line: 299
+                      function: handle
+                      class: Illuminate\Foundation\Http\Kernel
+                      type: '->'
+                    -
+                      file: /var/www/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
+                      line: 287
+                      function: callLaravelOrLumenRoute
+                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
+                      type: '->'
+                    -
+                      file: /var/www/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
+                      line: 89
+                      function: makeApiCall
+                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
+                      type: '->'
+                    -
+                      file: /var/www/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
+                      line: 45
+                      function: makeResponseCall
+                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
+                      type: '->'
+                    -
+                      file: /var/www/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
+                      line: 35
+                      function: makeResponseCallIfConditionsPass
+                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
+                      type: '->'
+                    -
+                      file: /var/www/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php
+                      line: 222
+                      function: __invoke
+                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
+                      type: '->'
+                    -
+                      file: /var/www/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php
+                      line: 179
+                      function: iterateThroughStrategies
+                      class: Knuckles\Scribe\Extracting\Extractor
+                      type: '->'
+                    -
+                      file: /var/www/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php
+                      line: 116
+                      function: fetchResponses
+                      class: Knuckles\Scribe\Extracting\Extractor
+                      type: '->'
+                    -
+                      file: /var/www/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php
+                      line: 123
+                      function: processRoute
+                      class: Knuckles\Scribe\Extracting\Extractor
+                      type: '->'
+                    -
+                      file: /var/www/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php
+                      line: 80
+                      function: extractEndpointsInfoFromLaravelApp
+                      class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
+                      type: '->'
+                    -
+                      file: /var/www/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php
+                      line: 56
+                      function: extractEndpointsInfoAndWriteToDisk
+                      class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
+                      type: '->'
+                    -
+                      file: /var/www/vendor/knuckleswtf/scribe/src/Commands/GenerateDocumentation.php
+                      line: 55
+                      function: get
+                      class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php
+                      line: 36
+                      function: handle
+                      class: Knuckles\Scribe\Commands\GenerateDocumentation
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Container/Util.php
+                      line: 41
+                      function: 'Illuminate\Container\{closure}'
+                      class: Illuminate\Container\BoundMethod
+                      type: '::'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php
+                      line: 93
+                      function: unwrapIfClosure
+                      class: Illuminate\Container\Util
+                      type: '::'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php
+                      line: 37
+                      function: callBoundMethod
+                      class: Illuminate\Container\BoundMethod
+                      type: '::'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Container/Container.php
+                      line: 651
+                      function: call
+                      class: Illuminate\Container\BoundMethod
+                      type: '::'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Console/Command.php
+                      line: 139
+                      function: call
+                      class: Illuminate\Container\Container
+                      type: '->'
+                    -
+                      file: /var/www/vendor/symfony/console/Command/Command.php
+                      line: 291
+                      function: execute
+                      class: Illuminate\Console\Command
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Console/Command.php
+                      line: 124
+                      function: run
+                      class: Symfony\Component\Console\Command\Command
+                      type: '->'
+                    -
+                      file: /var/www/vendor/symfony/console/Application.php
+                      line: 998
+                      function: run
+                      class: Illuminate\Console\Command
+                      type: '->'
+                    -
+                      file: /var/www/vendor/symfony/console/Application.php
+                      line: 299
+                      function: doRunCommand
+                      class: Symfony\Component\Console\Application
+                      type: '->'
+                    -
+                      file: /var/www/vendor/symfony/console/Application.php
+                      line: 171
+                      function: doRun
+                      class: Symfony\Component\Console\Application
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Console/Application.php
+                      line: 102
+                      function: run
+                      class: Symfony\Component\Console\Application
+                      type: '->'
+                    -
+                      file: /var/www/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php
+                      line: 129
+                      function: run
+                      class: Illuminate\Console\Application
+                      type: '->'
+                    -
+                      file: /var/www/artisan
+                      line: 37
+                      function: handle
+                      class: Illuminate\Foundation\Console\Kernel
+                      type: '->'
+                properties:
+                  message:
+                    type: string
+                    example: 'App\Services\ProfileService::show(): Return value must be of type App\Models\Profile, null returned'
+                  exception:
+                    type: string
+                    example: TypeError
+                  file:
+                    type: string
+                    example: /var/www/app/Services/ProfileService.php
+                  line:
+                    type: integer
+                    example: 31
+                  trace:
+                    type: array
+                    example:
+                      -
+                        file: /var/www/app/Http/Controllers/Api/Profile/ShowController.php
+                        line: 35
+                        function: show
+                        class: App\Services\ProfileService
+                        type: '->'
+                      -
+                        file: /var/www/app/Http/Controllers/APIController.php
+                        line: 23
+                        function: 'App\Http\Controllers\Api\Profile\{closure}'
+                        class: App\Http\Controllers\Api\Profile\ShowController
+                        type: '->'
+                      -
+                        file: /var/www/app/Http/Controllers/Api/Profile/ShowController.php
+                        line: 42
+                        function: safe
+                        class: App\Http\Controllers\APIController
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Routing/Controller.php
+                        line: 54
+                        function: main
+                        class: App\Http\Controllers\Api\Profile\ShowController
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php
+                        line: 45
+                        function: callAction
+                        class: Illuminate\Routing\Controller
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Routing/Route.php
+                        line: 261
+                        function: dispatch
+                        class: Illuminate\Routing\ControllerDispatcher
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Routing/Route.php
+                        line: 204
+                        function: runController
+                        class: Illuminate\Routing\Route
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Routing/Router.php
+                        line: 725
+                        function: run
+                        class: Illuminate\Routing\Route
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                        line: 141
+                        function: 'Illuminate\Routing\{closure}'
+                        class: Illuminate\Routing\Router
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php
+                        line: 50
+                        function: 'Illuminate\Pipeline\{closure}'
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                        line: 180
+                        function: handle
+                        class: Illuminate\Routing\Middleware\SubstituteBindings
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php
+                        line: 126
+                        function: 'Illuminate\Pipeline\{closure}'
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php
+                        line: 102
+                        function: handleRequest
+                        class: Illuminate\Routing\Middleware\ThrottleRequests
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php
+                        line: 54
+                        function: handleRequestUsingNamedLimiter
+                        class: Illuminate\Routing\Middleware\ThrottleRequests
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                        line: 180
+                        function: handle
+                        class: Illuminate\Routing\Middleware\ThrottleRequests
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/sanctum/src/Http/Middleware/EnsureFrontendRequestsAreStateful.php
+                        line: 33
+                        function: 'Illuminate\Pipeline\{closure}'
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                        line: 141
+                        function: 'Laravel\Sanctum\Http\Middleware\{closure}'
+                        class: Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                        line: 116
+                        function: 'Illuminate\Pipeline\{closure}'
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/sanctum/src/Http/Middleware/EnsureFrontendRequestsAreStateful.php
+                        line: 34
+                        function: then
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                        line: 180
+                        function: handle
+                        class: Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                        line: 116
+                        function: 'Illuminate\Pipeline\{closure}'
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Routing/Router.php
+                        line: 726
+                        function: then
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Routing/Router.php
+                        line: 703
+                        function: runRouteWithinStack
+                        class: Illuminate\Routing\Router
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Routing/Router.php
+                        line: 667
+                        function: runRoute
+                        class: Illuminate\Routing\Router
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Routing/Router.php
+                        line: 656
+                        function: dispatchToRoute
+                        class: Illuminate\Routing\Router
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php
+                        line: 167
+                        function: dispatch
+                        class: Illuminate\Routing\Router
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                        line: 141
+                        function: 'Illuminate\Foundation\Http\{closure}'
+                        class: Illuminate\Foundation\Http\Kernel
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php
+                        line: 21
+                        function: 'Illuminate\Pipeline\{closure}'
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php
+                        line: 31
+                        function: handle
+                        class: Illuminate\Foundation\Http\Middleware\TransformsRequest
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                        line: 180
+                        function: handle
+                        class: Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php
+                        line: 21
+                        function: 'Illuminate\Pipeline\{closure}'
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php
+                        line: 40
+                        function: handle
+                        class: Illuminate\Foundation\Http\Middleware\TransformsRequest
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                        line: 180
+                        function: handle
+                        class: Illuminate\Foundation\Http\Middleware\TrimStrings
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php
+                        line: 27
+                        function: 'Illuminate\Pipeline\{closure}'
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                        line: 180
+                        function: handle
+                        class: Illuminate\Foundation\Http\Middleware\ValidatePostSize
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php
+                        line: 86
+                        function: 'Illuminate\Pipeline\{closure}'
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                        line: 180
+                        function: handle
+                        class: Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php
+                        line: 62
+                        function: 'Illuminate\Pipeline\{closure}'
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                        line: 180
+                        function: handle
+                        class: Illuminate\Http\Middleware\HandleCors
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php
+                        line: 39
+                        function: 'Illuminate\Pipeline\{closure}'
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                        line: 180
+                        function: handle
+                        class: Illuminate\Http\Middleware\TrustProxies
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                        line: 116
+                        function: 'Illuminate\Pipeline\{closure}'
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php
+                        line: 142
+                        function: then
+                        class: Illuminate\Pipeline\Pipeline
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php
+                        line: 111
+                        function: sendRequestThroughRouter
+                        class: Illuminate\Foundation\Http\Kernel
+                        type: '->'
+                      -
+                        file: /var/www/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
+                        line: 299
+                        function: handle
+                        class: Illuminate\Foundation\Http\Kernel
+                        type: '->'
+                      -
+                        file: /var/www/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
+                        line: 287
+                        function: callLaravelOrLumenRoute
+                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
+                        type: '->'
+                      -
+                        file: /var/www/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
+                        line: 89
+                        function: makeApiCall
+                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
+                        type: '->'
+                      -
+                        file: /var/www/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
+                        line: 45
+                        function: makeResponseCall
+                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
+                        type: '->'
+                      -
+                        file: /var/www/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
+                        line: 35
+                        function: makeResponseCallIfConditionsPass
+                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
+                        type: '->'
+                      -
+                        file: /var/www/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php
+                        line: 222
+                        function: __invoke
+                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
+                        type: '->'
+                      -
+                        file: /var/www/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php
+                        line: 179
+                        function: iterateThroughStrategies
+                        class: Knuckles\Scribe\Extracting\Extractor
+                        type: '->'
+                      -
+                        file: /var/www/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php
+                        line: 116
+                        function: fetchResponses
+                        class: Knuckles\Scribe\Extracting\Extractor
+                        type: '->'
+                      -
+                        file: /var/www/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php
+                        line: 123
+                        function: processRoute
+                        class: Knuckles\Scribe\Extracting\Extractor
+                        type: '->'
+                      -
+                        file: /var/www/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php
+                        line: 80
+                        function: extractEndpointsInfoFromLaravelApp
+                        class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
+                        type: '->'
+                      -
+                        file: /var/www/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php
+                        line: 56
+                        function: extractEndpointsInfoAndWriteToDisk
+                        class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
+                        type: '->'
+                      -
+                        file: /var/www/vendor/knuckleswtf/scribe/src/Commands/GenerateDocumentation.php
+                        line: 55
+                        function: get
+                        class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php
+                        line: 36
+                        function: handle
+                        class: Knuckles\Scribe\Commands\GenerateDocumentation
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Container/Util.php
+                        line: 41
+                        function: 'Illuminate\Container\{closure}'
+                        class: Illuminate\Container\BoundMethod
+                        type: '::'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php
+                        line: 93
+                        function: unwrapIfClosure
+                        class: Illuminate\Container\Util
+                        type: '::'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php
+                        line: 37
+                        function: callBoundMethod
+                        class: Illuminate\Container\BoundMethod
+                        type: '::'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Container/Container.php
+                        line: 651
+                        function: call
+                        class: Illuminate\Container\BoundMethod
+                        type: '::'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Console/Command.php
+                        line: 139
+                        function: call
+                        class: Illuminate\Container\Container
+                        type: '->'
+                      -
+                        file: /var/www/vendor/symfony/console/Command/Command.php
+                        line: 291
+                        function: execute
+                        class: Illuminate\Console\Command
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Console/Command.php
+                        line: 124
+                        function: run
+                        class: Symfony\Component\Console\Command\Command
+                        type: '->'
+                      -
+                        file: /var/www/vendor/symfony/console/Application.php
+                        line: 998
+                        function: run
+                        class: Illuminate\Console\Command
+                        type: '->'
+                      -
+                        file: /var/www/vendor/symfony/console/Application.php
+                        line: 299
+                        function: doRunCommand
+                        class: Symfony\Component\Console\Application
+                        type: '->'
+                      -
+                        file: /var/www/vendor/symfony/console/Application.php
+                        line: 171
+                        function: doRun
+                        class: Symfony\Component\Console\Application
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Console/Application.php
+                        line: 102
+                        function: run
+                        class: Symfony\Component\Console\Application
+                        type: '->'
+                      -
+                        file: /var/www/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php
+                        line: 129
+                        function: run
+                        class: Illuminate\Console\Application
+                        type: '->'
+                      -
+                        file: /var/www/artisan
+                        line: 37
+                        function: handle
+                        class: Illuminate\Foundation\Console\Kernel
+                        type: '->'
+                    items:
+                      type: object
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the profile.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+tags:
+  -
+    name: Auth
+    description: ''
+  -
+    name: Device
+    description: ''
+  -
+    name: Endpoints
+    description: ''

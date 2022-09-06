@@ -18,6 +18,39 @@ class Repository
     protected $model;
 
     /**
+     * Find records
+     *
+     * @param array|Closure $where Conditions to find suitable records
+     * @param string $select Fields will be selected
+     * @param integer|null $paginate Paginate all records
+     * @return \Illuminate\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Collection
+     */
+    public function find($where, $select = "*", int $paginate = null)
+    {
+        return $this->safe(function () use ($where, $select, $paginate) {
+            $query = $this->model->select($select)->where($where);
+            return is_null($paginate) ? $query->get() : $query->paginate($paginate);
+        });
+    }
+
+    /**
+     * Find first record match conditions
+     *
+     * @param array|Closure $where Conditions to find suitable record
+     * @param string|array $select Fields will be selected
+     * @param bool $firstOrFail If true, throw CustomException in case not found
+     * @return \Illuminate\Database\Eloquent\Model|null
+     * @throws \App\Exceptions\CustomException
+     */
+    public function first($where, $select = "*", $firstOrFail = true)
+    {
+        return $this->safe(function () use ($where, $select, $firstOrFail) {
+            $query = $this->model->select($select)->where($where);
+            return $firstOrFail ? $query->firstOrFail() : $query->first();
+        });
+    }
+
+    /**
      * Create a record
      * @param array $params Parameters to create a record base on type of record
      */
@@ -46,12 +79,6 @@ class Repository
         return $this->safe(function () use ($id) {
             return $this->model->where('id', $id)->delete();
         });
-    }
-
-    public function list()
-    {
-        $users = DB::table('users')->paginate();
-        return $users;
     }
 
     public function safe(\Closure $callback)

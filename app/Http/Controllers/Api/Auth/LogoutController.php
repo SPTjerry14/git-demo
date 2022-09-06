@@ -19,7 +19,22 @@ class LogoutController extends APIController
     {
         //
     }
-
+    /**
+     * @group Auth
+     *
+     * Logout a user
+     *
+     * @middleware ['guest']
+     *
+     * @param LogoutRequest $request
+     *
+     * @bodyParam name string required Username of user. Example: jerry
+     * @bodyParam password string required Password of user. Example: kjav9-09v
+     * @bodyParam phone numeric Phone of user. Example: 0987654321
+     * @bodyParam email string Email of user. Example: chianh@gmail.com
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function main(LoginRequest $request)
     {
         $request->user()->currentAccessToken()->delete();
