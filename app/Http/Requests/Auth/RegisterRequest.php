@@ -22,7 +22,7 @@ class RegisterRequest extends APIRequest
             'name' => ['bail', 'alpha_dash', 'required', 'string', 'unique:users,name'],
             'email' => ['nullable', 'required', 'email', 'unique:users,email'],
             'phone' => ['nullable', 'numeric', 'unique:users,phone', 'regex:/^([0]{1}|\+84)([0-9]{9})$/'],
-            'password' => ['bail', 'string', 'min:8', 'confirmed'],
+            'password' => ['bail', 'string', 'min:8'],
             'profile' => ['nullable', 'array'],
             'profile.first_name' => ['bail', 'alpha', 'nullable', 'string'],
             'profile.last_name' => ['bail', 'alpha_dash', 'nullable', 'string'],

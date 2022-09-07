@@ -8,8 +8,10 @@ return [
         'SHOW' => ['code' => 2, 'message' => 'SHOW'],
         'UPDATED' => ['code' => 3, 'message' => 'updated success'],
         'DELETED' => ['code' => 4, 'message' => 'deleted success'],
+        'PAGINATED' => ['code' => 5, 'message' => 'paginated'],
         //
         'CREATED' => ['code' => 20, 'message' => 'CREATED'],
+        'ATTACHED' => ['code' => 21, 'message' => 'ATTACHED'],
         //
         'LOGOUT' => ['code' => 40, 'message'=> 'LOGOUT']
     ],

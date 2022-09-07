@@ -14,7 +14,9 @@ use App\Http\Controllers\Api\User\UpdateController as UserUpdateController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\UserController;
+use App\Models\Device;
 use App\Models\Profile;
+use App\Models\Role;
 use App\Models\User;
 use PHPUnit\TextUI\XmlConfiguration\Group;
 
@@ -33,7 +35,20 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-    
+Route::group([
+    'prefix' => 'device',
+    'namespace' => 'Device',
+    'middleware' => 'auth:sanctum'
+], function () {
+    Route::get('list', 'ListController@main');
+    Route::delete('{id}', 'DestroyController@main');
+    Route::post('{id}/rent', 'RentController@main');
+    Route::put('{id}/giveback', 'GivebackController@main');
+    Route::post('add', 'AddController@main');
+    Route::put('{id}', 'UpdateController@main');
+    Route::get('{id}', 'ShowController@main');
+});
+
 Route::post('/register', [RegisterController::class, 'main']);
 
 Route::get('/user/{id}', 'User\ShowController@main');
@@ -50,7 +65,7 @@ Route::put('/user/{id}', [UpdateController::class, 'main']);
 Route::delete('/user/{id}', [DestroyController::class, 'main']);
 
 Route::get('/profile/{id}', [ShowController::class, 'main']);
-    
+
 Route::post('/login', 'Auth\LoginController@main');
 
 Route::get('/logout', 'Auth\LogoutController@main')->middleware('auth:sanctum');

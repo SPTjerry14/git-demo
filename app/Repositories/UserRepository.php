@@ -19,6 +19,12 @@ class UserRepository extends Repository
         $this->model = $user;
     }
 
+    public function list()
+    {
+        $users = DB::table('users')->paginate();
+        return $users;
+    }
+
     public function role()
     {
         $role = DB::table('roles')->get();

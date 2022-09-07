@@ -18,6 +18,21 @@ class LoginController extends APIController
         //
     }
 
+    /**
+     * @group Auth
+     *
+     * Login a user
+     *
+     * @middleware ['guest']
+     *
+     * @param LoginRequest $request
+     *
+     * @bodyParam name string required Username of user. Example: jerry
+     * @bodyParam password string required Password of user. Example: kjav9-09v
+     * @bodyParam password_confirmation string required Confirm password, must be match to password. Example: kjav9-09v
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function main(LoginRequest $request)
     {
         return $this->safe(function () use ($request) {
