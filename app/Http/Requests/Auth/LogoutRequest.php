@@ -21,8 +21,8 @@ class LogoutRequest extends APIRequest
         return [
             //
             "name" => ["nullable", "string"],
-            'phone' => ['nullable', 'numeric', 'regex:/^([0]{1}|\+84)([0-9]{9})$/'],
-            'email' => ["nullable", "email"],
+            // 'phone' => ['nullable', 'numeric', 'regex:/^([0]{1}|\+84)([0-9]{9})$/'],
+            // 'email' => ["nullable", "email"],
             "password" => ["required", "string", "min:8", 'confirmed'],
         ];
     }

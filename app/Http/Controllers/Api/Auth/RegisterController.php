@@ -49,16 +49,13 @@ class RegisterController extends APIController
         return $this->safe(function () use ($request) {
 
             $params = $request->validated();
-            dd($params);
             $rawprofile = array_key_exists('profile', $params) ? array_merge($params['profile']) : [];
             if (array_key_exists('profile', $params)) {
                 unset($params['profile']);
             }
-            // dd($params);
             $user = $this->userService->store($params);
             $rawprofile['user_id'] = $user->id;
-            $profile = $this->profileService->store($rawprofile);
-
+            $this->profileService->store($rawprofile);
             return $this->success('CREATED', ['id' => $user->id]);
         });
     }

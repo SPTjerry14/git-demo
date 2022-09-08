@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Auth;
 
 use App\Http\Controllers\APIController;
 use App\Http\Requests\Auth\RegisterRequest;
+use App\Http\Requests\Auth\UpdateRequest;
 use App\Models\User;
 use App\Services\ProfileService;
 use App\Services\UserService;
@@ -28,18 +29,15 @@ class UpdateController extends APIController
         $this->profileService = $profileService;
     }
 
-    public function main(RegisterRequest $request, $id)
+    public function main(UpdateRequest $request, $id)
     {
         $params = $request->validated();
-        // dd($params);
         $rawprofile = array_key_exists('profile', $params) ? array_merge($params['profile']) : [];
         if (array_key_exists('profile', $params)) {
             unset($params['profile']);
         }
         $userUpdate = $this->userService->update($params, $id);
-        // $rawprofile['user_id'] = $id;
         $profile = $this->profileService->update($rawprofile, $id);
-
         return $this->success('UPDATED', ['id' => $id]);
     }
 }
