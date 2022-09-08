@@ -21,7 +21,7 @@ class UserRepository extends Repository
 
     public function list()
     {
-        $users = DB::table('users')->paginate();
+        $users = User::get();
         return $users;
     }
 

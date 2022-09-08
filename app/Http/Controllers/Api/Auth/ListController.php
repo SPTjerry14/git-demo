@@ -26,19 +26,8 @@ class ListController extends APIController
         $this->profileService = $profileService;
     }
 
-    public function listUser()
+    public function main()
     {
-        // $users = DB::table('users')->get();
         return $this->userService->list();
-    }
-
-    public function listProfile()
-    {
-        return $this->profileService->list();
-    }
-
-    public function listRole()
-    {
-        return $this->userService->role();
     }
 }

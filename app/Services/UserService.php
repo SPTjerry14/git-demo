@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Hash;
  * @package App\Services
  * @author
  */
-class UserService extends Services
+class UserService extends DBServices
 {
     /**
      * @var \APP\Repositories\UserRepository
